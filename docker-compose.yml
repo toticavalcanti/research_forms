@@ -1,0 +1,34 @@
+version: '2'
+
+services:
+  postgres:
+    image: 'postgres:9.5'
+    volumes:
+      - 'postgres:/var/lib/postgresql/data'
+
+  app:
+    depends_on:
+      - 'postgres'
+    build: .
+    command: bash start.sh
+    ports:
+      - '3000:3000'
+    volumes:
+      - '.:/research_forms'
+    volumes_from:
+    - box
+
+  box:
+    image: busybox
+    volumes:
+      - /box
+
+  mailcatcher:
+    image: tophfr/mailcatcher
+    ports:
+      - 1025:25
+      - 1080:80
+
+volumes:
+  postgres:
+  box:
