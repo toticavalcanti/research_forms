@@ -1,6 +1,24 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
+      get 'questions/create'
+    end
+  end
+
+  namespace :api do
+    namespace :v1 do
+      get 'questions/update'
+    end
+  end
+
+  namespace :api do
+    namespace :v1 do
+      get 'questions/destroy'
+    end
+  end
+
+  namespace :api do
+    namespace :v1 do
       get 'forms/index'
     end
   end
