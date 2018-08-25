@@ -10,10 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180824223330) do
+ActiveRecord::Schema.define(version: 20180825220136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answers", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "form_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["form_id"], name: "index_answers_on_form_id", using: :btree
+    t.index ["user_id"], name: "index_answers_on_user_id", using: :btree
+  end
+
+  create_table "forms", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "user_id"
+    t.string   "primary_color"
+    t.boolean  "enable"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["user_id"], name: "index_forms_on_user_id", using: :btree
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.text     "title"
+    t.integer  "kind"
+    t.integer  "form_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["form_id"], name: "index_questions_on_form_id", using: :btree
+  end
+
+  create_table "questions_answers", force: :cascade do |t|
+    t.text     "value"
+    t.integer  "answer_id"
+    t.integer  "question_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["answer_id"], name: "index_questions_answers_on_answer_id", using: :btree
+    t.index ["question_id"], name: "index_questions_answers_on_question_id", using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "provider",               default: "email", null: false
@@ -45,4 +84,10 @@ ActiveRecord::Schema.define(version: 20180824223330) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true, using: :btree
   end
 
+  add_foreign_key "answers", "forms"
+  add_foreign_key "answers", "users"
+  add_foreign_key "forms", "users"
+  add_foreign_key "questions", "forms"
+  add_foreign_key "questions_answers", "answers"
+  add_foreign_key "questions_answers", "questions"
 end
