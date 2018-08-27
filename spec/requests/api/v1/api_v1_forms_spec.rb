@@ -171,7 +171,7 @@ RSpec.describe "Api::V1::Forms", type: :request do
         end
       end
  
-      context "When form dont exists" do
+      context "When form don't exists" do
         before do
           @form_attributes = attributes_for(:form)
         end
