@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
     timestamp = loop do
        date = FFaker::Time.date.to_time
        break date.strftime("%F %T") if date &lt;= Date.today
