@@ -193,7 +193,6 @@ RSpec.describe "Api::V1::Forms", type: :request do
       it_behaves_like :deny_without_authorization, :delete, "/api/v1/forms/questionary"
     end
 
-
     context "With valid authentication headers" do
 
       context "When form exists" do
