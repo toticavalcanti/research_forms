@@ -197,6 +197,10 @@ RSpec.describe "Api::V1::Forms", type: :request do
 
       context "When form exists" do
 
+        before do 
+          @user = create(:user)
+        end
+
         context "And user is the owner" do
           before do
             @form = create(:form, user: @user)
@@ -224,7 +228,12 @@ RSpec.describe "Api::V1::Forms", type: :request do
         end
       end
 
-      context "When form dont exists" do
+      context "When form don't exists" do
+        
+        before do 
+          @user = create(:user)
+        end
+        
         it "returns 404" do
           delete "/api/v1/forms/#{FFaker::Lorem.word}", params: {}, headers: header_with_authentication(@user)
           expect_status(404)
