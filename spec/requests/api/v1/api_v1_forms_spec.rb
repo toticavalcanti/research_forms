@@ -119,4 +119,68 @@ RSpec.describe "Api::V1::Forms", type: :request do
       end
     end
   end
+
+  describe "PUT /forms/:friendly_id" do
+ 
+    context "With Invalid authentication headers" do
+      it_behaves_like :deny_without_authorization, :put, "/api/v1/forms/questionary"
+    end
+ 
+    context "With valid authentication headers" do
+      before do
+        @user = create(:user)
+      end
+ 
+      context "When form exists" do
+ 
+        context "And user is the owner" do
+          before do
+            @form = create(:form, user: @user)
+            @form_attributes = attributes_for(:form, id: @form.id)
+            put "/api/v1/forms/#{@form.friendly_id}", params: {form: @form_attributes}, headers: header_with_authentication(@user)
+          end
+ 
+          it "returns 200" do
+            expect_status(200)
+          end
+ 
+          it "form are updated with correct data" do
+            @form.reload
+            @form_attributes.each do |field|
+              expect(@form[field.first]).to eql(field.last)
+            end
+          end
+ 
+          it "Returned data is correct" do
+            @form_attributes.each do |field|
+              expect(json[field.first.to_s]).to eql(field.last)
+            end
+          end
+        end
+ 
+        context "And user is not the owner" do
+          before do
+            @form = create(:form)
+            @form_attributes = attributes_for(:form, id: @form.id)
+            put "/api/v1/forms/#{@form.friendly_id}", params: {form: @form_attributes}, headers: header_with_authentication(@user)
+          end
+ 
+          it "returns 403" do
+            expect_status(403)
+          end
+        end
+      end
+ 
+      context "When form dont exists" do
+        before do
+          @form_attributes = attributes_for(:form)
+        end
+ 
+        it "returns 404" do
+          delete "/api/v1/forms/#{FFaker::Lorem.word}", params: {form: @form_attributes}, headers: header_with_authentication(@user)
+          expect_status(404)
+        end
+      end
+    end
+  end
 end
