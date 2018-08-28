@@ -1,7 +1,7 @@
 FactoryBot.define do
     timestamp = loop do
        date = FFaker::Time.date.to_time
-       break date.strftime("%F %T") if date &lt;= Date.today
+       break date.strftime("%F %T") if date <= Date.today
     end
   
   
