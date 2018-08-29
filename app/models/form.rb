@@ -5,5 +5,5 @@ class Form < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: :slugged
   validates :title, :description, :user, presence: true
-  validates :title, uniqueness: true  
+  #validates :title, uniqueness: true  
 end
