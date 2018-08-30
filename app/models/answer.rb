@@ -1,7 +1,7 @@
 class Answer < ApplicationRecord
   belongs_to :form
   has_many :questions_answers, dependent: :destroy
-  accepts_nested_attributes_for :questions_answers
+  #accepts_nested_attributes_for :questions_answers
   validates :form, presence: true
   
  
