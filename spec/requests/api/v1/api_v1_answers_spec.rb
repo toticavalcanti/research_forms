@@ -144,7 +144,7 @@ RSpec.describe "Api::V1::Answers", type: :request do
             expect(Answer.all.count).to eql(0)
           end
  
-          it "associated questions answers are deleted" do
+          it "associated questions answers are deleted" do  
             expect(QuestionsAnswer.all.count).to eql(0)
           end
         end
