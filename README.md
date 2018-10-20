@@ -1,24 +1,29 @@
-# README
+#Research Form Api
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Research Form Api is a API project to be acess by Angular front-end application, research-forms-client.
 
-Things you may want to cover:
+## Getting Started
 
-* Ruby version
+To get a copy of this project on your local machine, use the command below:
+git clone git@github.com:toticavalcanti/research_forms.git
 
-* System dependencies
+### Prerequisites
 
-* Configuration
+You must have docker installed in your machine. 
+To instruction to this, access:
+https://docs.docker.com/install/
 
-* Database creation
+### Installing
+To install the Gems use:
+docker-compose run --rm app bundle install
 
-* Database initialization
+To create database and make migrations:
+docker-compose run app --rm bundle exec rake db:create db:migrate
 
-* How to run the test suite
+To build and up the API:
+docker-compose up --build
 
-* Services (job queues, cache servers, search engines, etc.)
+If you already build, use only:
+docker-compose up
 
-* Deployment instructions
 
-* ...
