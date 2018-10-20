@@ -15,7 +15,7 @@ To instruction to this, access:<br>
 	https://docs.docker.com/install/
 
 ### Installing
-To install the Gems use:<br>
+To install the Gems, inside of the project folder use:<br>
 	<code>docker-compose run --rm app bundle install</code>
 
 To create database and make migrations:<br>
