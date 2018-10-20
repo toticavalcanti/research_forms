@@ -1,6 +1,7 @@
 # Research Form API
 
-Research Form API is a API project to be acess by Angular front-end application, research-forms-client.
+Research Form API is a API project like Google Form API.
+It is to be acess by Angular front-end application, research-forms-client.
 
 ## Getting Started
 
