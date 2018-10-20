@@ -5,7 +5,7 @@ Research Form API is a API project to be acess by Angular front-end application,
 ## Getting Started
 
 To get a copy of this project on your local machine, use the command below:<br>
-git clone git@github.com:toticavalcanti/research_forms.git
+<code>git clone git@github.com:toticavalcanti/research_forms.git</code>
 
 ### Prerequisites
 
