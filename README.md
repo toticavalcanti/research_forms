@@ -15,15 +15,15 @@ To instruction to this, access:<br>
 
 ### Installing
 To install the Gems use:<br>
-	docker-compose run --rm app bundle install
+	<code>docker-compose run --rm app bundle install</code>
 
 To create database and make migrations:<br>
-	docker-compose run app --rm bundle exec rake db:create db:migrate
+	<code>docker-compose run app --rm bundle exec rake db:create db:migrate</code>
 
 To build and up the API:<br>
-	docker-compose up --build
+	<code>docker-compose up --build</code>
 
 If you already build, use only:<br>
-	docker-compose up
+	<code>docker-compose up</code>
 
 
