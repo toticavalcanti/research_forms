@@ -10,9 +10,13 @@ To get a copy of this project on your local machine, use the command below:<br>
 
 ### Prerequisites
 
-You must have docker installed in your machine. 
+You must have docker installed in your machine. <br>
 To instruction to this, access:<br>
 	https://docs.docker.com/install/
+
+And Git too.
+To instruction to this, access:<br>
+https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 
 ### Installing
 To install the Gems, inside of the project folder use:<br>
