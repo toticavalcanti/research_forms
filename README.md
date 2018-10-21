@@ -14,7 +14,7 @@ You must have docker installed in your machine. <br>
 To instruction to this, access:<br>
 	https://docs.docker.com/install/
 
-And Git too.
+And Git install too.<br>
 To instruction to this, access:<br>
 https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 
